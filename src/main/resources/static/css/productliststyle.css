@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+/* 画面情報 */
+h1 {
+  margin-left: 30%;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 2.5rem;
+}
+
+/* ページ情報 */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+/* システムメッセージ、登録ボタン、商品情報とテーブルを画面の真ん中に固定 */
+.flexcontainer {
+  /* 縦一列に並ぶ */
+  flex-direction: column;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+}
+
+/* システムメッセージ左寄せ */
+.sysmsg {
+  margin-right: 700px;
+}
+
+/* 商品画像 設定 */
+img {
+  height: 100px;
+  width: 150px;
+}
+
+/* 商品件数情報右寄せ */
+.pinfo {
+  margin-left: 800px;
+}
+
+/* テーブル一行目の色 */
+th {
+  background-color: #03A9F4;
+}
+
+/* 更新ボタン */
+.updatebutton {
+  /* 背景の色 */
+  background-color: black;
+  /* 文字色 */
+  color: white;
+  /* 枠線色 */
+  border-color: white;
+}
+
+/* 登録ボタン右寄 */
+.registerbutton {
+  margin-left: 980%;
+    /* 背景の色 */
+  background-color: black;
+  /* 文字色 */
+  color: white;
+  /* 枠線色 */
+  border-color: white;
+}
+
+/* 文字を左寄せに設定 */
+.words {
+  direction: ltr;
+}
+
+/* 数字を右寄せに設定 */
+.numbers {
+  text-align: right;
+}
+
+/* 商品IDを真ん中 */
+.id {
+  text-align: center;
+}
