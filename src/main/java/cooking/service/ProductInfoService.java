@@ -1,6 +1,5 @@
 package cooking.service;
 
-import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,7 @@ import cooking.mapper.ProductInfoMapper;
  * @version 1.0.0
  */
 @Service
-public class ProductInfoService implements Serializable {
+public class ProductInfoService {
 
 	/** productInfoMapper.*/
 	@Autowired
@@ -24,9 +23,8 @@ public class ProductInfoService implements Serializable {
 
 	/**
 	 * productInfoMapper.getProductInfoList()を呼ぶメソッド.
-	 * @return productInfoMapper.getProductInfoList()。
+	 * @return 全商品情報。
 	 */
-	@Transactional
 	public List<ProductInfo> getProductInfoList() {
 		return productInfoMapper.getProductInfoList();
 	}
@@ -43,9 +41,8 @@ public class ProductInfoService implements Serializable {
 	/**
 	 * productInfoMapper.getProductInfo(productID)を呼ぶメソッド.
 	 * @param productID 選択した商品ID。
-	 * @return productInfoMapper.getProductInfo(productID)。
+	 * @return 選択したIDに基づいた商品情報。
 	 */
-	@Transactional
 	public ProductInfo getProductInfo(Integer productID) {
 		return productInfoMapper.getProductInfo(productID);
 	}
@@ -53,7 +50,7 @@ public class ProductInfoService implements Serializable {
 	/**
 	 * productInfoMapper.updateProductInfo(productInfo)を呼ぶメソッド.
 	 * @param productInfo 商品情報。
-	 * @return productInfoMapper.updateProductInfo(productInfo)。
+	 * @return 更新した商品情報。
 	 */
 	@Transactional
 	public Integer updateProductInfo(ProductInfo productInfo) {
@@ -64,7 +61,7 @@ public class ProductInfoService implements Serializable {
 	/**
 	 * productInfoMapper.deleteProductInfo(productInfo)を呼ぶメソッド.
 	 * @param productInfo 商品情報。
-	 * @return productInfoMapper.deleteProductInfo(productInfo)。
+	 * @return 更新した商品情報（論理削除）。
 	 */
 	@Transactional
 	public Integer deleteProductInfo(ProductInfo productInfo) {

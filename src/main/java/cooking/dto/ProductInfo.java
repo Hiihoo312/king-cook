@@ -3,7 +3,6 @@ package cooking.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 
-import javax.validation.GroupSequence;
 import javax.validation.constraints.DecimalMax;
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.NotEmpty;
@@ -12,13 +11,10 @@ import javax.validation.constraints.Size;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import cooking.validation.FileSpell;
+import cooking.validation.PicFileFormat;
+import cooking.validation.PicSize;
 import lombok.Data;
-import validation.CheckGroups.CheckGroup1;
-import validation.CheckGroups.CheckGroup2;
-import validation.CheckGroups.CheckGroup3;
-import validation.FileSpell;
-import validation.PicFileFormat;
-import validation.PicSize;
 
 /**
  * 商品情報一時保存するBEANクラス.
@@ -26,11 +22,10 @@ import validation.PicSize;
  * @version 1.0.0
  */
 @Data
-
 public class ProductInfo implements Serializable {
-	@GroupSequence({ CheckGroup1.class, CheckGroup2.class, CheckGroup3.class })
-	public interface All {
-	}
+
+	/** シリアルバージョンUID.*/
+	private static final long serialVersionUID = -6180752307345718566L;
 
 	/** 商品ID.*/
 	private Integer productID;
@@ -39,37 +34,35 @@ public class ProductInfo implements Serializable {
 	private String genre;
 
 	/** 商品メーカー.*/
-	// リクエストパラメータとしてmakerが存在するかどうかをチェック。
-	@NotEmpty(groups = CheckGroup1.class)
-	@Size(max = 20, groups = CheckGroup1.class)
+	@NotEmpty
+	@Size(max = 20)
 	private String maker;
 
 	/** 商品名.*/
-	// リクエストパラメータとしてproductNameが存在するかどうかをチェック。
-	@NotEmpty(groups = CheckGroup1.class)
-	@Size(max = 25, groups = CheckGroup1.class)
+	@NotEmpty
+	@Size(max = 25)
 	private String productName;
 
 	/** 販売価格.*/
-	@DecimalMax(value = "100000000", inclusive = false, groups = CheckGroup1.class)
-	@DecimalMin(value = "1", inclusive = true, groups = CheckGroup1.class)
+	@NotNull
+	@DecimalMax(value = "99999999")
+	@DecimalMin(value = "1")
 	private BigDecimal sellingPrice;
 
 	/** データベースに保存する為のVARBINARY型バイナリデータの商品画像.*/
-	@NotNull
 	private byte[] productImg;
 
 	/** 画面表示する為の商品画像変数.*/
 	private String stringImg;
 
 	/** 画像データの取得とバイナリ変換する為の変数.*/
-	@FileSpell(maxWordsNumber = 16, groups = CheckGroup1.class)
-	@PicFileFormat(groups = CheckGroup1.class)
-	@PicSize(groups = CheckGroup1.class)
+	@FileSpell(maxWordsNumber = 15)
+	@PicFileFormat
+	@PicSize(maxSize = 500000)
 	private MultipartFile multipartFile;
 
 	/** 商品説明.*/
-	@Size(min = 1, max = 200, groups = CheckGroup1.class)
+	@Size(max = 200)
 	private String productDetail;
 
 	/** データ更新日時.*/
@@ -80,8 +73,4 @@ public class ProductInfo implements Serializable {
 
 	/** データ登録日時.*/
 	private String insertDate;
-
-	/** 現在時刻.*/
-	private String CURRENT_TIMESTAMP;
-
 }

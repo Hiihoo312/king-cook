@@ -11,7 +11,7 @@ import cooking.dto.ProductInfo;
  * @author ris.h.hen
  * @version 1.0.0
  */
-@Mapper //Mapper.xmlを呼ぶ
+@Mapper
 public interface ProductInfoMapper {
 
 	/**

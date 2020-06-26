@@ -3,99 +3,56 @@
   <head>
     <meta charset="UTF-8">
     <title>商品情報登録</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/productregistrationstyle.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="js/productRegister.js"></script>
   </head>
 
   <body>
     <h1>商品情報管理システム</h1>
     <h2>商品情報登録</h2>
 
-    <div class="items">
-      <form th:action="@{/product-registration}" th:method="put" th:object="${productInfo}" enctype="multipart/form-data">
-        <!-- エラーメッセージ -->
-        <p><label class="ermsg" th:if="${#fields.hasAnyErrors()}" th:each="err : ${#fields.allErrors()}" th:text="${err}"></label></p>
+    <div class="flexcontainer">
+      <!-- 戻るボタン -->
+      <a href="product-list" class="backbtn" onClick="return backConfirm()">戻る</a>
 
-        <!-- 戻るボタン -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#backModal">戻る</button>
-
-        <!-- モーダルダイアログ -->
-        <div class="modal fade" id="backModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-          <div class="modal-dialog"  role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="demoModalTitle">タイトル</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                入力内容は保存されません。前画面に戻りますか？
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                <button type="submit"  class="btn btn-primary">はい</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-
-      <form th:action="@{/product-registration}" th:object="${productInfo}" method="post" enctype="multipart/form-data">
-
+      <form th:action="@{/product-registration}" th:object="${productInfo}" method="post"
+      enctype="multipart/form-data">
+        <label class="ermsg" th:if="${#fields.hasAnyErrors()}" th:each="err: ${#fields.allErrors()}"
+        th:text="${err}">
+        </label>
         <!-- 登録ボタン -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#registrationModal">登録</button><p>
+        <button class="regiterbtn" type="submit" onClick="return registerConfirm()">登録</button>
 
-        <!-- モーダルダイアログ -->
-        <div class="modal fade" id="registrationModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-          <div class="modal-dialog"  role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="demoModalTitle">タイトル</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                商品情報を登録しますか？
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                <button type="submit" class="btn btn-primary">はい</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <input type="hidden" th:field="*{insertDate}">
-        <input type="hidden" th:field="*{updateDate}"><p>
-
-        <div class="infos">
-          ジャンル:
-          <select class = "txtbar" th:field="*{genre}">
+        <div class="infoscontainer">
+          <div class="producttitle">ジャンル:</div>
+          <select class="inputwdsposition" th:field="*{genre}">
             <option
-              th:each="genre : ${T(cooking.enums.GenreEnum).values()}"
-              th:value="${genre.genreCode}" th:text="${genre.genreName}">
+              th:each="genres: ${T(cooking.enums.GenreEnum).values()}"
+              th:value="${genres.genreCode}" th:text="${genres.genreName}">
             </option>
-          </select><p>
-          <p>
-            メーカー:
-            <input class = "txtbar" type="text" th:field="*{maker}" th:errorclass="err" placeholder
-            ="メーカーを入力"/><p>
-            <div class = "wspace">商品名:<input class = "txtbar" type="text" th:field="*{productName}" th:errorclass="err" placeholder="商品名を入力"/></div><p>
-            <p>
-            販売価格:
-            <input class = "txtbar" type="text" th:field="*{sellingPrice}" th:errorclass="err" placeholder
-            ="販売価格を入力"/><p>
-            商品説明:
-            <textarea class = "txtbar" th:field="*{productDetail}" th:errorclass="err"></textarea><p>
-            商品画像:
-            <input class = "updatedimg" type="file" th:field="*{multipartFile}"/>
+          </select>
+
+          <div class="producttitle">メーカー:</div>
+          <input class="inputwdsposition" type="text" th:field="*{maker}" placeholder="メーカーを入力"/>
+
+
+          <div class="producttitle">商品名:</div>
+          <input class="inputwdsposition" type="text" th:field="*{productName}" placeholder="商品名を入力"/>
+
+          <div class="producttitle">販売価格:</div>
+          <input class="inputnumposition" type="text" th:field="*{sellingPrice}" placeholder="販売価格を入力"/>
+
+          <div class="producttitle">商品説明:</div>
+          <textarea class="inputwdsposition" th:field="*{productDetail}"></textarea>
+
+          <div class="producttitle">商品画像:</div>
+          <input class="inputwdsposition" type="file" th:field="*{multipartFile}"/>
+
         </div>
       </form>
     </div>
 
-    <script type="text/javascript" src="js/jquery-3.5.0.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
   </body>
 </html>

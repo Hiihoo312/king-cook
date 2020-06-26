@@ -35,7 +35,7 @@ h2 {
   margin-right: 700px;
 }
 
-/* 商品画像 設定 */
+/* 商品画像設定 */
 img {
   height: 100px;
   width: 150px;
@@ -59,17 +59,21 @@ th {
   color: white;
   /* 枠線色 */
   border-color: white;
+  width: 50px;
+  height: 25px;
 }
 
 /* 登録ボタン右寄 */
 .registerbutton {
-  margin-left: 980%;
+  margin-left: 850%;
     /* 背景の色 */
   background-color: black;
   /* 文字色 */
   color: white;
   /* 枠線色 */
   border-color: white;
+  width: 50px;
+  height: 25px;
 }
 
 /* 文字を左寄せに設定 */
@@ -80,9 +84,4 @@ th {
 /* 数字を右寄せに設定 */
 .numbers {
   text-align: right;
-}
-
-/* 商品IDを真ん中 */
-.id {
-  text-align: center;
 }

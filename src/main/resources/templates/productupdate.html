@@ -3,130 +3,70 @@
   <head>
     <meta charset="UTF-8">
     <title>商品情報更新</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/productupdatestyle.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <script type="text/javascript" src="js/productUpdate.js"></script>
   </head>
 
   <body>
     <h1>商品情報管理システム</h1>
     <h2>商品情報更新</h2>
 
-    <!-- エラーメッセージ -->
-    <p><span th:text="${message}"></span></p>
-
-    <div class="items">
-      <form th:action="@{/product-update}" th:method="get">
-
+    <div class="flexcontainer">
+      <!-- システムメッセージ -->
+      <p><span class="sysmsg" th:text="${message}"></span></p>
         <!-- 戻るボタン -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#backModal">戻る</button><p>
+      <a href="product-list" class="backbtn" onClick="return backConfirm()">戻る</a>
 
-        <!-- モーダルダイアログ -->
-        <div class="modal fade" id="backModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-          <div class="modal-dialog"  role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="demoModalTitle">タイトル</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                入力内容は保存されません。前画面に戻りますか？
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                <button type="submit"  class="btn btn-primary">はい</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </form>
-
-      <form th:action="@{/product-update}" th:method="delete" th:object="${productInfo}" enctype="multipart/form-data">
+      <form th:action="@{/product-update}" th:method="delete" th:object="${productInfo}"
+      enctype="multipart/form-data">
         <input type="hidden" th:field="*{updateDate}">
         <input type="hidden" th:field="*{productID}">
-
         <!-- 削除ボタン -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deleteModal">削除</button><p>
-
-        <!-- モーダルダイアログ -->
-        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-          <div class="modal-dialog"  role="document">
-           <div class="modal-content">
-             <div class="modal-header">
-               <h5 class="modal-title" id="demoModalTitle">タイトル</h5>
-               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                 <span aria-hidden="true">&times;</span>
-               </button>
-             </div>
-             <div class="modal-body">
-               商品情報を削除しますか？
-             </div>
-             <div class="modal-footer">
-               <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-               <button type="submit" class="btn btn-primary">はい</button>
-             </div>
-           </div>
-         </div>
-       </div>
+        <div>
+          <button type="submit" class="deletebtn" onClick="return deleteConfirm()">削除</button>
+        </div>
       </form>
 
       <form th:action="@{/product-update}" th:method="put" th:object="${productInfo}" enctype="multipart/form-data">
         <input type="hidden" th:field="*{updateDate}">
-
         <!-- 更新ボタンボタン -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#updateModal">更新</button><p>
+        <div>
+          <button type="submit" class="updatebtn" onClick="return updateConfirm()">更新</button>
+        </div>
+        <p><label class="ermsg" th:if="${#fields.hasAnyErrors()}" th:each="err: ${#fields.allErrors()}"
+        th:text="${err}"></label></p>
 
-        <!-- モーダルダイアログ -->
-        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="modal" aria-hidden="true">
-          <div class="modal-dialog"  role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="demoModalTitle">タイトル</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                商品情報を更新しますか？
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-                <button type="submit" class="btn btn-primary">はい</button>
-              </div>
-            </div>
-          </div>
-        </div><p>
+        <div class="infoscontainer">
+          <div class="producttitle">商品ID:</div>
+          <input class="inputnumposition" type="text" th:field="*{productID}" readonly>
 
-        <p><label class="ermsg" th:if="${#fields.hasAnyErrors()}" th:each="err : ${#fields.allErrors()}" th:text="${err}"></label></p>
-
-        <div class="infos">
-          <label for ="n01" class = "idspace">商品ID:</label>
-          <input class = "txtbar" type="text" id = "n01" th:field="*{productID}" readonly><p>
-          <p>
-            ジャンル:
-            <select class = "txtbar" th:field="*{genre}">
-            <option th:each="genre : ${T(cooking.enums.GenreEnum).values()}" th:value="${genre.genreCode}"
-            th:text="${genre.genreName}">
+          <div class="producttitle">ジャンル:</div>
+          <select class="inputwdsposition" th:field="*{genre}">
+            <option th:each="genres: ${T(cooking.enums.GenreEnum).values()}"
+            th:value="${genres.genreCode}" th:text="${genres.genreName}">
             </option>
-            </select><p>
-            メーカー:
-            <input class = "txtbar" type="text" th:field="*{maker}"><p>
-            <div class = "wspace">商品名:<input class = "txtbar" type="text" th:field="*{productName}"></div><p>
-            <p>
-            販売価格:
-            <input class = "txtbar" type="text" th:field="*{sellingPrice}"><p>
-            商品説明:
-            <textarea class = "txtbar" th:field="*{productDetail}"></textarea><p>
-            商品画像:
-            <input type="image" class = "updatedimg" th:src="|data:image/png;base64,${productInfo.stringImg}|" readonly/>
-            <input type="file" th:field="*{multipartFile} "/>
+          </select>
+
+          <div class="producttitle">メーカー:</div>
+          <input class="inputwdsposition" type="text" th:field="*{maker}">
+
+          <div class="producttitle">商品名:</div>
+          <input class="inputwdsposition" type="text" th:field="*{productName}">
+
+          <div class="producttitle">販売価格:</div>
+          <input class="inputnumposition" type="text" th:field="*{sellingPrice}">
+
+          <div class="producttitle">商品説明:</div>
+          <textarea class="inputwdsposition" th:field="*{productDetail}"></textarea>
+
+          <div class="producttitle">商品画像:</div>
+          <input class="inputwdsposition" type="file" th:field="*{multipartFile}"/>
+          <div><img class = "updatedimg" th:src="|data:image/png;base64,${productInfo.stringImg}|"></div>
         </div>
       </form>
-      </div>
+    </div>
 
-    <script type="text/javascript" src="js/jquery-3.5.0.js"></script>
-    <script type="text/javascript" src="js/bootstrap.bundle.js"></script>
   </body>
 </html>
