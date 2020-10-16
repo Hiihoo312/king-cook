@@ -22,10 +22,10 @@ public interface ProductInfoMapper {
 
 	/**
 	 * 商品IDを基にDBから商品情報をセレクト、更新画面のテキストボックスに表示するメソッドです.
-	 * @param productID 商品ID。
+	 * @param productId 商品ID。
 	 * @return 選択したIDに基づいた商品情報。
 	 */
-	ProductInfo getProductInfo(Integer productID);
+	ProductInfo getProductInfo(Integer productId);
 
 	/**
 	 * 商品情報登録メソッド.
@@ -36,14 +36,14 @@ public interface ProductInfoMapper {
 	/**
 	 * 商品情報更新メソッド.
 	 * @param productInfo 商品情報。
-	 * @return 更新した商品情報。
+	 * @return 更新件数。
 	 */
 	Integer updateProductInfo(ProductInfo productInfo);
 
 	/**
 	 * 商品情報削除メソッド.
 	 * @param productInfo 商品情報。
-	 * @return 選択された商品情報。
+	 * @return 削除件数。
 	 */
 	Integer deleteProductInfo(ProductInfo productInfo);
 }

@@ -2,12 +2,12 @@
 
 /* 画面情報 */
 h1 {
-  margin-left: 30%;
-  margin-top: 0;
+  margin-left: 7%;
+  margin-top: 2%;
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
 }
 
 /* ページ情報 */
@@ -20,30 +20,31 @@ h2 {
   margin-top: 0;
 }
 
-/* システムメッセージ、登録ボタン、商品情報とテーブルを画面の真ん中に固定 */
-.flexcontainer {
-  /* 縦一列に並ぶ */
-  flex-direction: column;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  justify-content: center;
-}
-
 /* システムメッセージ左寄せ */
 .sysmsg {
-  margin-right: 700px;
+  margin-left: 7%;
 }
 
 /* 商品画像設定 */
 img {
-  height: 100px;
-  width: 150px;
+  height: auto;
+  width: 100px;
+}
+
+/* 商品画像欄設定 */
+td.pic {
+  height: auto;
+  width: 100px;
 }
 
 /* 商品件数情報右寄せ */
 .pinfo {
-  margin-left: 800px;
+  margin-left: 88%;
+}
+
+table {
+  width: 90%;
+  margin-left: 7%;
 }
 
 /* テーブル一行目の色 */
@@ -61,16 +62,15 @@ th {
   border-color: white;
   width: 50px;
   height: 25px;
+  margin-left: 19%;
+  margin-right: 21%;
 }
 
 /* 登録ボタン右寄 */
 .registerbutton {
-  margin-left: 850%;
-    /* 背景の色 */
+  margin-left: 91%;
   background-color: black;
-  /* 文字色 */
   color: white;
-  /* 枠線色 */
   border-color: white;
   width: 50px;
   height: 25px;

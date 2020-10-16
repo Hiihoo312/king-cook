@@ -26,7 +26,7 @@ public class PicSizeValidator implements ConstraintValidator<PicSize, MultipartF
 	/**
 	 * 入力チェック処理を実装するメソッド.
 	 * @param inputMultipartFile 入力されたマルチパートファイル。
-	 * @param cxt 入力チェックインスタンスの変数名。
+	 * @param cxt オリジナルバリデータを機能させるインターフェス。
 	 */
 	@Override
 	public boolean isValid(MultipartFile inputMultipartFile, ConstraintValidatorContext cxt) {
@@ -34,7 +34,7 @@ public class PicSizeValidator implements ConstraintValidator<PicSize, MultipartF
 		if (inputMultipartFile == null || inputMultipartFile.isEmpty()) {
 			return true;
 		}
-		if (inputMultipartFile.getSize() <= maxSize) {
+		if (inputMultipartFile != null && inputMultipartFile.getSize() <= maxSize) {
 			return true;
 		} else {
 			return false;

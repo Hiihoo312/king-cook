@@ -17,12 +17,12 @@ import cooking.mapper.ProductInfoMapper;
 @Service
 public class ProductInfoService {
 
-	/** productInfoMapper.*/
+	/** productInfoMapper インターフェス.*/
 	@Autowired
 	ProductInfoMapper productInfoMapper;
 
 	/**
-	 * productInfoMapper.getProductInfoList()を呼ぶメソッド.
+	 * インターフェスを呼んで、全商品情報を取得するメソッド.
 	 * @return 全商品情報。
 	 */
 	public List<ProductInfo> getProductInfoList() {
@@ -30,7 +30,7 @@ public class ProductInfoService {
 	}
 
 	/**
-	 * productInfoMapper.insertProductInfo(productInfo)を呼ぶメソッド.
+	 * インターフェスを呼んで、商品情報を登録するメソッド.
 	 * @param productInfo 商品情報。
 	 */
 	@Transactional
@@ -39,29 +39,28 @@ public class ProductInfoService {
 	}
 
 	/**
-	 * productInfoMapper.getProductInfo(productID)を呼ぶメソッド.
-	 * @param productID 選択した商品ID。
+	 * インターフェスを呼んで、選択したIDに基づいた商品情報を取得するメソッド.
+	 * @param productId 選択した商品ID。
 	 * @return 選択したIDに基づいた商品情報。
 	 */
-	public ProductInfo getProductInfo(Integer productID) {
-		return productInfoMapper.getProductInfo(productID);
+	public ProductInfo getProductInfo(Integer productId) {
+		return productInfoMapper.getProductInfo(productId);
 	}
 
 	/**
-	 * productInfoMapper.updateProductInfo(productInfo)を呼ぶメソッド.
+	 * インターフェスを呼んで、更新件数を取得するメソッド.
 	 * @param productInfo 商品情報。
-	 * @return 更新した商品情報。
+	 * @return 更新件数。
 	 */
 	@Transactional
 	public Integer updateProductInfo(ProductInfo productInfo) {
 		return productInfoMapper.updateProductInfo(productInfo);
-
 	}
 
 	/**
-	 * productInfoMapper.deleteProductInfo(productInfo)を呼ぶメソッド.
+	 * インターフェスを呼んで、削除件数を取得するメソッド.
 	 * @param productInfo 商品情報。
-	 * @return 更新した商品情報（論理削除）。
+	 * @return 削除件数。
 	 */
 	@Transactional
 	public Integer deleteProductInfo(ProductInfo productInfo) {
