@@ -23,7 +23,6 @@ import lombok.Data;
  */
 @Data
 public class ProductInfo implements Serializable {
-
 	/** シリアルバージョンUID.*/
 	private static final long serialVersionUID = -6180752307345718566L;
 
