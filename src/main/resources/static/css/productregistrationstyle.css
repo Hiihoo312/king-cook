@@ -2,12 +2,12 @@
 
 /* 画面情報 */
 h1 {
-  margin-left: 7%;
-  margin-top: 2%;
+  margin-left: 30%;
+  margin-top: 0;
   margin-bottom: 0.5rem;
   font-weight: 500;
   line-height: 1.2;
-  font-size: 1.7rem;
+  font-size: 2.5rem;
 }
 
 /* ページ情報 */
@@ -20,44 +20,27 @@ h2 {
   margin-top: 0;
 }
 
-/* システムメッセージ位置調整 */
-.sysmsg {
-  position: relative;
-  left: 21%;
-}
-
 /* エラーメッセージ */
 .ermsg {
   color: red;
   position: relative;
-  left: 19%;
-  top: 5%;
-  width: 51%;
-  word-break: normal;
-  display: block;
-}
-
-/* 更新ボタン */
-button.updatebtn {
-  /* 背景の色 */
-  background-color: black;
-  /* 文字色 */
-  color: white;
-  /* 枠線色 */
-  border-color: black;
-  position: fixed;
-  top: 15%;
   left: 70%;
-  width: 50px;
-  height: 25px;
-  text-align: center;
-  border-style: solid;
-  border-width: 1px;
-  font-size: 14px;
+  top: 20px;
+  width: 100%;
+  /* 改行設定 */
+  word-break: normal;
 }
 
-/* 削除ボタン */
-button.deletebtn {
+/* フレックスボックスでエラーメッセージ位置調整 */
+.flexcontainer {
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  width: 650px;
+}
+
+ /* 登録ボタン */
+button {
   /* 背景の色 */
   background-color: black;
   /* 文字色 */
@@ -65,8 +48,8 @@ button.deletebtn {
   /* 枠線色 */
   border-color: black;
   position: fixed;
-  top: 15%;
-  left: 77%;
+  top: 35%;
+  left: 50%;
   width: 50px;
   height: 25px;
   text-align: center;
@@ -85,8 +68,8 @@ a.backbtn {
   border-color: black;
   text-decoration: none;
   position: fixed;
-  top: 15%;
-  left: 84%;
+  top: 35%;
+  left: 54%;
   right: 50%;
   width: 50px;
   height: 25px;
@@ -98,11 +81,11 @@ a.backbtn {
 
 /* 商品情報の位置調整(親コンテナ) */
 .infoscontainer {
-  display: block;
-  position: relative;
-  margin-top: 4%;
-  margin-left: 19%;
-  width: 86%;
+  display: flex-start;
+  position: fixed;
+  top: 39%;
+  left: 30%;
+  width: 80%;
 }
 
 /* infoscontainerの子アイテムタイトル */
@@ -114,24 +97,17 @@ a.backbtn {
 /* infoscontainerの子アイテム(入力文字系) */
 .inputwdsposition {
   position: relative;
-  left: 9%;
+  left: 10%;
   bottom: 20px;
-  width: 57%;
+  width: 350px;
   direction: ltr;
 }
 
 /* infoscontainerの子アイテム(入力数字系) */
 .inputnumposition {
   position: relative;
-  left: 9%;
+  left: 10%;
   bottom: 20px;
-  width: 57%;
+  width: 350px;
   text-align: right;
-}
-
-/* 画像 */
-img.updatedimg {
-  height: 100px;
-  left: 9%;
-  position: relative;
 }

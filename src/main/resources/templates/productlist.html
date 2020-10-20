@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>商品情報一覧</title>
+    <link rel="stylesheet" type="text/css" href="css/productliststyle.css">
+  </head>
+
+  <body>
+	<h1>商品情報管理システム</h1>
+	<h2>商品情報一覧</h2>
+
+	<div class="flexcontainer">
+	  <!-- システムメッセージ -->
+      <p><span class="sysmsg" th:text="${message}"></span></p>
+      <div>
+	    <button class="registerbutton" onclick="location.href='/product-registration'">登録</button>
+      </div>
+      <div >
+        <p class="pinfo" th:text="${'商品情報件数'+ numberGet + '件'}"></p>
+      </div>
+      <div>
+        <table border="1">
+	      <tr>
+	        <th>イメージ</th>
+		    <th>商品ID</th>
+		    <th>ジャンル</th>
+		    <th>メーカー</th>
+		    <th>商品名</th>
+		    <th>販売価格</th>
+		    <th>更新</th>
+	      </tr>
+	      <tr th:each="productInfoShow: ${productInfos}" th:object="${productInfoShow}">
+            <td><img th:src="|data:image/png;base64,${productInfoShow.stringImg}|"
+            onerror="this.src='././images/no_image.png'"/></td>
+            <td class="numbers" th:text="*{productID}"></td>
+		    <td class="words" th:text="${T(cooking.enums.GenreEnum).getValueByCode(productInfoShow.genre)}"></td>
+		    <td class="words" th:text="*{maker}"></td>
+		    <td class="words" th:text="*{productName}"></td>
+		    <td class="numbers" th:text="*{sellingPrice}"></td>
+		    <td>
+		      <form th:action="@{/product-update}" th:method="post">
+		        <input type="hidden" name="productID" th:value="*{productID}">
+			    <input class="updatebutton" type="submit" value="更新">
+		      </form>
+		    </td>
+	      </tr>
+        </table>
+	  </div>
+	</div>
+
+  </body>
+</html>

@@ -28,7 +28,7 @@ public class ProductInfo implements Serializable {
 	private static final long serialVersionUID = -6180752307345718566L;
 
 	/** 商品ID.*/
-	private Integer productId;
+	private Integer productID;
 
 	/** 商品ジャンル.*/
 	private String genre;
@@ -58,7 +58,7 @@ public class ProductInfo implements Serializable {
 	/** 画像データの取得とバイナリ変換する為の変数.*/
 	@FileSpell(maxWordsNumber = 15)
 	@PicFileFormat
-	@PicSize(maxSize = 512000)
+	@PicSize(maxSize = 500000)
 	private MultipartFile multipartFile;
 
 	/** 商品説明.*/

@@ -1,5 +1,6 @@
 package cooking.validation;
 
+import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -13,6 +14,7 @@ import javax.validation.Payload;
  * @author ris.h.hen
  * @version 1.0.0
  */
+@Documented
 @Constraint(validatedBy = { PicSizeValidator.class })
 @Target({ ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
