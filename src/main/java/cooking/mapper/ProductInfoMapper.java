@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Mapper;
 import cooking.dto.ProductInfo;
 
 /**
- * インターフェスのマッパークラスです.
+ * インターフェースのマッパークラスです.
  * @author ris.h.hen
  * @version 1.0.0
  */

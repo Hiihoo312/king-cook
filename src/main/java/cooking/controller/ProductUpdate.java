@@ -28,7 +28,7 @@ import cooking.service.ProductInfoService;
 @Controller
 public class ProductUpdate {
 
-	/** productInfoService インターフェス.*/
+	/** productInfoService インターフェース.*/
 	@Autowired
 	private ProductInfoService productInfoService;
 
@@ -48,7 +48,7 @@ public class ProductUpdate {
 
 		ProductInfo productInfoItems = productInfoService.getProductInfo(productId);
 
-		// 取得件数が0件の場合、商品情報一覧画面に戻り、EMSG202メッセージを表示
+		// 取得件数が0件の場合、商品情報一覧画面に戻り、EMSG202メッセージを表示。
 		if (productInfoItems == null) {
 			attributes.addFlashAttribute("message", messageSource.getMessage("EMSG202", null, Locale.JAPAN));
 			return "redirect:/product-list";
@@ -59,7 +59,7 @@ public class ProductUpdate {
 			productInfoItems.setStringImg(new String(Base64.encodeBase64(productInfoItems.getProductImg())));
 		}
 		model.addAttribute("productInfo", productInfoItems);
-		return "product-update";
+		return "productupdate";
 	}
 
 	/**
@@ -76,9 +76,9 @@ public class ProductUpdate {
 			Model model, RedirectAttributes attributes) throws IOException {
 		// 入力チェックをし、エラーの場合はエラーメッセージを表示。
 		if (bindingResult.hasErrors()) {
-			return "/product-update";
+			return "/productupdate";
 		}
-		// 更新画像が無い場合は、元の画像をそのままセットする
+		// 更新画像が無い場合は、元の画像をそのままセットする。
 		if (productInfoUp.getMultipartFile().isEmpty()) {
 			productInfoUp.setStringImg(new String(Base64.encodeBase64(productInfoUp.getProductImg())));
 		}
@@ -87,12 +87,12 @@ public class ProductUpdate {
 			productInfoUp.setProductImg(productInfoUp.getMultipartFile().getBytes());
 		}
 		Integer updateNumber = productInfoService.updateProductInfo(productInfoUp);
-		// 更新件数は0件の場合、商品情報更新画面にてEMSG201メッセージを表示。
+		// 更新件数は0件の場合、商品情報更新画面にてメッセージEMSG201を表示。
 		if (0 == updateNumber) {
 			model.addAttribute("message", messageSource.getMessage("EMSG201", null, Locale.JAPAN));
-			return "/product-update";
+			return "/productupdate";
 		}
-		// その他の場合、更新処理を行い、商品情報一覧画面にもどる。
+		// その他の場合、更新処理を行い、商品情報一覧画面にもどり、メッセージIMSG202を表示。
 		else {
 			attributes.addFlashAttribute("message", messageSource.getMessage("IMSG202", null, Locale.JAPAN));
 			return "redirect:/product-list";
@@ -111,12 +111,12 @@ public class ProductUpdate {
 			RedirectAttributes attributes) {
 		// 下でif文で実行を分岐させるため、変数updateCaseの戻り値を取得。
 		Integer updateCase = productInfoService.deleteProductInfo(productInfoDele);
-		// 削除件数は0件の場合、削除処理を行い、商品情報更新画面にもどる。
+		// 削除件数0件の場合、商品情報更新画面にもどり、メッセージEMSG201を表示。
 		if (0 == updateCase) {
 			model.addAttribute("message", messageSource.getMessage("EMSG201", null, Locale.JAPAN));
-			return "/product-update";
+			return "/productupdate";
 		}
-		// その他の場合、商品情報一覧画面にてEMSG201メッセージを表示。
+		// その他の場合、商品情報一覧画面に戻り、メッセージIMSG203を表示。
 		else {
 			attributes.addFlashAttribute("message", messageSource.getMessage("IMSG203", null, Locale.JAPAN));
 			return "redirect:/product-list";

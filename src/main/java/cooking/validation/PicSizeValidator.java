@@ -26,7 +26,7 @@ public class PicSizeValidator implements ConstraintValidator<PicSize, MultipartF
 	/**
 	 * 入力チェック処理を実装するメソッド.
 	 * @param inputMultipartFile 入力されたマルチパートファイル。
-	 * @param cxt オリジナルバリデータを機能させるインターフェス。
+	 * @param cxt オリジナルバリデータを機能させるインターフェース。
 	 */
 	@Override
 	public boolean isValid(MultipartFile inputMultipartFile, ConstraintValidatorContext cxt) {

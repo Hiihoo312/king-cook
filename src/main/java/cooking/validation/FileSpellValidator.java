@@ -27,12 +27,12 @@ public class FileSpellValidator implements ConstraintValidator<FileSpell, Multip
 	/**
 	 * 入力チェック処理を実装するメソッド.
 	 * @param inputMultipartFile 入力されたマルチパートファイル。
-	 * @param cxt オリジナルバリデータを機能させるインターフェス。
+	 * @param cxt オリジナルバリデータを機能させるインターフェース。
 	 */
 	@Override
 	public boolean isValid(MultipartFile inputMultipartFile, ConstraintValidatorContext cxt) {
 
-		if (inputMultipartFile == null | inputMultipartFile.isEmpty()) {
+		if (inputMultipartFile == null || inputMultipartFile.isEmpty()) {
 			return true;
 		}
 		if (inputMultipartFile.getOriginalFilename().length() <= maxWordsNumber) {

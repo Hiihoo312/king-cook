@@ -21,13 +21,14 @@ h2 {
 }
 
 /* システムメッセージ位置調整 */
-.sysmsg {
+.sys-msg {
+  color: red;
   position: relative;
   left: 21%;
 }
 
 /* エラーメッセージ */
-.ermsg {
+.err-msg {
   color: red;
   position: relative;
   left: 19%;
@@ -38,7 +39,7 @@ h2 {
 }
 
 /* 更新ボタン */
-button.updatebtn {
+button.update-button {
   /* 背景の色 */
   background-color: black;
   /* 文字色 */
@@ -57,7 +58,7 @@ button.updatebtn {
 }
 
 /* 削除ボタン */
-button.deletebtn {
+button.delete-button {
   /* 背景の色 */
   background-color: black;
   /* 文字色 */
@@ -76,7 +77,7 @@ button.deletebtn {
 }
 
 /* 戻るボタン */
-a.backbtn {
+a.back-button {
   /* 背景の色 */
   background-color: black;
   /* 文字色 */
@@ -97,7 +98,7 @@ a.backbtn {
 }
 
 /* 商品情報の位置調整(親コンテナ) */
-.infoscontainer {
+.infos-container {
   display: block;
   position: relative;
   margin-top: 4%;
@@ -105,14 +106,14 @@ a.backbtn {
   width: 86%;
 }
 
-/* infoscontainerの子アイテムタイトル */
-.producttitle {
+/* infos-containerの子アイテムタイトル */
+.product-title {
   /* 文字の間隔調整 */
   letter-spacing: 3px;
 }
 
-/* infoscontainerの子アイテム(入力文字系) */
-.inputwdsposition {
+/* infos-containerの子アイテム(入力文字系) */
+.input-wds-position {
   position: relative;
   left: 9%;
   bottom: 20px;
@@ -120,8 +121,8 @@ a.backbtn {
   direction: ltr;
 }
 
-/* infoscontainerの子アイテム(入力数字系) */
-.inputnumposition {
+/* infos-containerの子アイテム(入力数字系) */
+.input-num-position {
   position: relative;
   left: 9%;
   bottom: 20px;
@@ -130,7 +131,7 @@ a.backbtn {
 }
 
 /* 画像 */
-img.updatedimg {
+img.updated-img {
   height: 100px;
   left: 9%;
   position: relative;

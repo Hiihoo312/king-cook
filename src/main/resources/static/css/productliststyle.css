@@ -21,7 +21,7 @@ h2 {
 }
 
 /* システムメッセージ左寄せ */
-.sysmsg {
+.sys-msg {
   margin-left: 7%;
 }
 
@@ -38,22 +38,29 @@ td.pic {
 }
 
 /* 商品件数情報右寄せ */
-.pinfo {
+.product-info {
   margin-left: 88%;
 }
 
 table {
   width: 90%;
   margin-left: 7%;
+  border-collapse: collapse;
+  border: 1.5px solid black;
+}
+
+td {
+  border: solid 1px black;
 }
 
 /* テーブル一行目の色 */
 th {
-  background-color: #03A9F4;
+  background-color: deepskyblue;
+  border: 1px solid black;
 }
 
 /* 更新ボタン */
-.updatebutton {
+.update-button {
   /* 背景の色 */
   background-color: black;
   /* 文字色 */
@@ -67,7 +74,7 @@ th {
 }
 
 /* 登録ボタン右寄 */
-.registerbutton {
+.register-button {
   margin-left: 91%;
   background-color: black;
   color: white;

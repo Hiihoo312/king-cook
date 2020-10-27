@@ -26,7 +26,7 @@ import cooking.service.ProductInfoService;
 @Controller
 public class ProductRegistration {
 
-	/** productInfoService インターフェス.*/
+	/** productInfoService インターフェース.*/
 	@Autowired
 	private ProductInfoService productInfoService;
 
@@ -47,8 +47,8 @@ public class ProductRegistration {
 			RedirectAttributes attributes) throws IOException {
 		// 入力チェックを行い、エラーの場合は商品情報登録画面に戻り、該当エラーメッセージを表示。
 		if (bindingResult.hasErrors()) {
-			return "/product-registration";
-			// 他の場合は商品情報を登録し、商品情報一覧画面に戻る。
+			return "/productregistration";
+			// 他の場合は商品情報を登録し、商品情報一覧画面に戻り、メッセージIMSG201を表示。
 		} else {
 			productInfo.setProductImg(productInfo.getMultipartFile().getBytes());
 			productInfoService.insertProductInfo(productInfo);
@@ -66,7 +66,7 @@ public class ProductRegistration {
 	public String moveToRegisterPage(Model model) {
 		// 空オブジェクト「ProductInfo()」の値を属性名「productInfo」にセットする。
 		model.addAttribute("productInfo", new ProductInfo());
-		return "product-registration";
+		return "productregistration";
 	}
 
 }
