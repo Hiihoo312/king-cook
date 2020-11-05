@@ -11,8 +11,8 @@
     <h1>商品情報管理システム</h1>
     <h2>商品情報更新</h2>
 
-      <!-- システムメッセージ -->
-      <p><span class="sys-msg" th:text="${message}"></span></p>
+      <!-- 排他制御メッセージ -->
+      <span class="ec-msg" th:text="${exlusiveControlMessage}"></span>
       <!-- 戻るボタン -->
       <a href="product-list" class="back-button" onClick="return backConfirm()">戻る</a>
 

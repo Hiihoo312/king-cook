@@ -25,6 +25,12 @@ h2 {
   margin-left: 7%;
 }
 
+/* 排他制御メッセージ */
+.ec-msg {
+  color: red;
+  margin-left: 7%;
+}
+
 /* 商品画像設定 */
 img {
   height: auto;

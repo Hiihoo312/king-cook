@@ -10,7 +10,7 @@ import cooking.dto.ProductInfo;
 import cooking.mapper.ProductInfoMapper;
 
 /**
- * インターフェースのサービスクラスです.
+ * 商品情報に関するサービスクラスです.
  * @author ris.h.hen
  * @version 1.0.0
  */

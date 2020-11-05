@@ -20,8 +20,8 @@ h2 {
   margin-top: 0;
 }
 
-/* システムメッセージ位置調整 */
-.sys-msg {
+/* 排他制御メッセージ */
+.ec-msg {
   color: red;
   position: relative;
   left: 21%;
