@@ -10,7 +10,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  */
 @SpringBootApplication
 public class CookingApplication {
-
+	/**
+	 * メインメソッドです.
+	 * @param args コマンドラインの引数。
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(CookingApplication.class, args);
 	}

@@ -32,13 +32,9 @@ public class ProductUpdate {
 	@Autowired
 	private ProductInfoService productInfoService;
 
-	/** messageSource 更新、削除、サーチ処理完了後、表示するメッセージ.*/
+	/** messageSource 排他メッセージ、更新、削除、サーチ処理完了後、表示するメッセージ.*/
 	@Autowired
 	MessageSource messageSource;
-
-	/** exlusiveControlMessageSource 排他制御メッセージ.*/
-	@Autowired
-	MessageSource exlusiveControlMessageSource;
 
 	/**
 	 * 商品情報一覧画面で選択したIDに基づいた商品情報を商品情報更新画面に表示するメソッド.
@@ -54,7 +50,8 @@ public class ProductUpdate {
 
 		// 取得件数が0件の場合、商品情報一覧画面に戻り、EMSG202メッセージを表示。
 		if (productInfoItems == null) {
-			attributes.addFlashAttribute("exlusiveControlMessage", exlusiveControlMessageSource.getMessage("EMSG202", null, Locale.JAPAN));
+			attributes.addFlashAttribute("exlusiveControlMessage",
+					messageSource.getMessage("EMSG202", null, Locale.JAPAN));
 			return "redirect:/product-list";
 		}
 		if (productInfoItems.getProductImg() == null) {
@@ -93,7 +90,7 @@ public class ProductUpdate {
 		Integer updateNumber = productInfoService.updateProductInfo(productInfoUp);
 		// 更新件数は0件の場合、商品情報更新画面にてメッセージEMSG201を表示。
 		if (0 == updateNumber) {
-			model.addAttribute("exlusiveControlMessage", exlusiveControlMessageSource.getMessage("EMSG201", null, Locale.JAPAN));
+			model.addAttribute("exlusiveControlMessage", messageSource.getMessage("EMSG201", null, Locale.JAPAN));
 			return "/productupdate";
 		}
 		// その他の場合、更新処理を行い、商品情報一覧画面にもどり、メッセージIMSG202を表示。
@@ -117,7 +114,7 @@ public class ProductUpdate {
 		Integer updateCase = productInfoService.deleteProductInfo(productInfoDele);
 		// 削除件数0件の場合、商品情報更新画面にもどり、メッセージEMSG201を表示。
 		if (0 == updateCase) {
-			model.addAttribute("exlusiveControlMessage", exlusiveControlMessageSource.getMessage("EMSG201", null, Locale.JAPAN));
+			model.addAttribute("exlusiveControlMessage", messageSource.getMessage("EMSG201", null, Locale.JAPAN));
 			return "/productupdate";
 		}
 		// その他の場合、商品情報一覧画面に戻り、メッセージIMSG203を表示。

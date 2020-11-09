@@ -25,8 +25,8 @@ h2 {
   margin-left: 7%;
 }
 
-/* 排他制御メッセージ */
-.ec-msg {
+/* エラー(排他制御)メッセージ */
+.err-msg {
   color: red;
   margin-left: 7%;
 }
