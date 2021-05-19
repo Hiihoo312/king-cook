@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>商品情報登録</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/productregistrationstyle.css}">
+    <script type="text/javascript" th:src="@{js/productRegister.js}"></script>
+  </head>
+
+  <body>
+    <h1>商品情報管理システム</h1>
+    <h2>商品情報登録</h2>
+
+      <!-- 戻るボタン -->
+      <a th:href="@{/product-list}" class="back-button" th:onclick="return backConfirm()">戻る</a>
+      <form th:action="@{/product-registration}" th:object="${productInfo}" method="post"
+        enctype="multipart/form-data">
+
+        <label class="err-msg" th:if="${#fields.hasAnyErrors()}" th:each="err: ${#fields.allErrors()}"
+          th:text="${err}">
+        </label>
+
+        <!-- 登録ボタン -->
+        <button class="register-button" type="submit" th:onclick="return registerConfirm()">登録</button>
+
+        <!-- 商品情報 -->
+        <div class="infos-container">
+          <div class="product-title">ジャンル:</div>
+          <select class="input-wds-position" th:field="*{genre}">
+            <option
+              th:each="genres: ${T(cooking.enums.GenreEnum).values()}"
+              th:value="${genres.genreCode}" th:text="${genres.genreName}">
+            </option>
+          </select>
+          <div class="product-title">メーカー:</div>
+          <input class="input-wds-position" type="text" th:field="*{maker}" placeholder="メーカーを入力"/>
+          <div class="product-title">商品名:</div>
+          <input class="input-wds-position" type="text" th:field="*{productName}" placeholder="商品名を入力"/>
+          <div class="product-title">販売価格:</div>
+          <input class="input-num-position" type="text" th:field="*{sellingPrice}" placeholder="販売価格を入力"/>
+          <div class="product-title">商品説明:</div>
+          <textarea class="input-wds-position" th:field="*{productDetail}"></textarea>
+          <div class="product-title">商品画像:</div>
+          <input class="input-wds-position" type="file" th:field="*{multipartFile}"/>
+        </div>
+      </form>
+
+  </body>
+</html>

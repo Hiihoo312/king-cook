@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cooking.mapper.ProductInfoMapper">
+
+  <select id="getProductInfoList" resultType="cooking.dto.ProductInfo">
+    SELECT
+      ProductID,
+      Genre,
+      Maker,
+      ProductName,
+      SellingPrice,
+      ProductImg
+    FROM
+      ProductInfo
+    WHERE
+      DeleteFlg = '0'
+    ORDER BY
+      ProductID ASC
+  </select>
+
+  <select id="getProductInfo" parameterType="int" resultType="cooking.dto.ProductInfo">
+        SELECT
+          ProductID,
+          ProductName,
+          Genre,
+          Maker,
+          SellingPrice,
+          ProductDetail,
+          ProductImg,
+          UpdateDate
+        FROM
+          ProductInfo
+        WHERE
+          ProductID = #{productId}
+          AND DeleteFlg = '0'
+  </select>
+
+  <insert id="insertProductInfo" parameterType="cooking.dto.ProductInfo">
+      INSERT INTO ProductInfo (
+        ProductName,
+        Genre,
+        Maker,
+        SellingPrice,
+        ProductDetail,
+        ProductImg,
+        InsertDate,
+        UpdateDate
+      ) VALUES (
+        #{productName},
+        #{genre},
+        #{maker},
+        #{sellingPrice},
+        #{productDetail},
+        #{productImg},
+        CURRENT_TIMESTAMP(),
+        CURRENT_TIMESTAMP()
+      )
+  </insert>
+
+  <update id="updateProductInfo" parameterType="cooking.dto.ProductInfo">
+        UPDATE
+          ProductInfo
+        SET
+          ProductName = #{productName},
+          Genre = #{genre},
+          Maker = #{maker},
+          SellingPrice = #{sellingPrice},
+          ProductDetail = #{productDetail},
+          ProductImg = #{productImg},
+          UpdateDate = CURRENT_TIMESTAMP()
+        WHERE
+          ProductID = #{productId}
+          AND UpdateDate <![CDATA[ = ]]> #{updateDate}
+    </update>
+
+  <update id="deleteProductInfo" parameterType="cooking.dto.ProductInfo">
+        UPDATE
+          ProductInfo
+        SET
+          DeleteFlg = '1',
+          UpdateDate = CURRENT_TIMESTAMP()
+        WHERE
+          ProductID = #{productId}
+          AND UpdateDate <![CDATA[ = ]]> #{updateDate}
+    </update>
+</mapper>

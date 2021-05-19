@@ -1,0 +1,131 @@
+@charset "UTF-8";
+
+/* 画面情報 */
+h1 {
+  margin-left: 7%;
+  margin-top: 2%;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  font-size: 1.7rem;
+}
+
+/* ページ情報 */
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-top: 0;
+}
+
+/* エラー(排他制御)メッセージ */
+.err-msg {
+  color: red;
+  position: relative;
+  left: 19%;
+  top: 5%;
+  width: 51%;
+  word-break: normal;
+  display: block;
+}
+
+/* 更新ボタン */
+button.update-button {
+  /* 背景の色 */
+  background-color: black;
+  /* 文字色 */
+  color: white;
+  /* 枠線色 */
+  border-color: black;
+  position: fixed;
+  top: 15%;
+  left: 70%;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 14px;
+}
+
+/* 削除ボタン */
+button.delete-button {
+  /* 背景の色 */
+  background-color: black;
+  /* 文字色 */
+  color: white;
+  /* 枠線色 */
+  border-color: black;
+  position: fixed;
+  top: 15%;
+  left: 77%;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 14px;
+}
+
+/* 戻るボタン */
+a.back-button {
+  /* 背景の色 */
+  background-color: black;
+  /* 文字色 */
+  color: white;
+  /* 枠線色 */
+  border-color: black;
+  text-decoration: none;
+  position: fixed;
+  top: 15%;
+  left: 84%;
+  right: 50%;
+  width: 50px;
+  height: 25px;
+  text-align: center;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 14px;
+}
+
+/* 商品情報の位置調整(親コンテナ) */
+.infos-container {
+  display: block;
+  position: relative;
+  margin-top: 4%;
+  margin-left: 19%;
+  width: 86%;
+}
+
+/* infos-containerの子アイテムタイトル */
+.product-title {
+  /* 文字の間隔調整 */
+  letter-spacing: 3px;
+}
+
+/* infos-containerの子アイテム(入力文字系) */
+.input-wds-position {
+  position: relative;
+  left: 9%;
+  bottom: 20px;
+  width: 57%;
+  direction: ltr;
+}
+
+/* infos-containerの子アイテム(入力数字系) */
+.input-num-position {
+  position: relative;
+  left: 9%;
+  bottom: 20px;
+  width: 57%;
+  text-align: right;
+}
+
+/* 画像 */
+img.updated-img {
+  height: 100px;
+  left: 9%;
+  position: relative;
+}
